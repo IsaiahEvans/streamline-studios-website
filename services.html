@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Streamline Studios</title>
+<meta name="description" content="Streamline Studios services — automotive photography, videography, brand lookbooks, events, and graduation sessions in Charlotte, NC.">
+<meta property="og:title" content="Services — Streamline Studios">
+<meta property="og:description" content="Streamline Studios services — automotive photography, videography, brand lookbooks, events, and graduation sessions in Charlotte, NC.">
+<!-- TODO: og:image and og:url use relative paths for now — swap in absolute URLs (https://your-domain/...) once the site is live -->
+<meta property="og:image" content="assets/img/og-preview.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="services.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Services — Streamline Studios">
+<meta name="twitter:description" content="Streamline Studios services — automotive photography, videography, brand lookbooks, events, and graduation sessions in Charlotte, NC.">
+<meta name="twitter:image" content="assets/img/og-preview.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+<link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div data-include="components/header.html"></div>
+
+<main style="max-width:var(--max); margin:0 auto; padding:10rem clamp(1.25rem, 4vw, 3rem) 6rem;">
+  <p class="eyebrow">WHAT WE SHOOT</p>
+  <h1 style="font-size:clamp(2.5rem, 6vw, 4.5rem); margin-bottom:2rem;">Services</h1>
+  <p style="color:var(--smoke); max-width:60ch; margin-bottom:1rem;">
+    Every session is lit, framed, and edited with the same cinematic, dark-luxury eye. Pick a track
+    below — pricing includes editing and delivery; final quotes can flex with location, group size,
+    and turnaround.
+  </p>
+
+  <!-- CAR SESSIONS -->
+  <section class="service-group">
+    <h2>Car Sessions</h2>
+    <div class="services-grid services-grid--4up">
+
+      <div class="service-card">
+        <h3>Car Essentials</h3>
+        <p class="service-price">$120</p>
+        <ul class="service-details">
+          <li>30–45 min session</li>
+          <li>1 location</li>
+          <li>15 edited photos</li>
+        </ul>
+        <a href="booking.html?package=car-essentials" class="link-arrow">Book this <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+      <!-- "Most Popular" defaults to each section's middle/Signature tier — placeholder, reassign freely -->
+      <div class="service-card">
+        <span class="badge-popular">Most Popular</span>
+        <h3>Car Signature</h3>
+        <p class="service-price">$220</p>
+        <ul class="service-details">
+          <li>75 min session</li>
+          <li>1–2 locations</li>
+          <li>22 edited photos</li>
+          <li>Rolling shots if permitted</li>
+        </ul>
+        <a href="booking.html?package=car-signature" class="link-arrow">Book this <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+      <div class="service-card">
+        <h3>Car Deluxe</h3>
+        <p class="service-price">$350</p>
+        <ul class="service-details">
+          <li>2 hour session</li>
+          <li>2–3 locations</li>
+          <li>30 edited photos</li>
+          <li>Rolling shots + 15-sec cinematic reel</li>
+        </ul>
+        <a href="booking.html?package=car-deluxe" class="link-arrow">Book this <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+      <div class="service-card" id="car-group">
+        <h3>Car Group</h3>
+        <p class="service-price">From $250</p>
+        <ul class="service-details">
+          <li>Custom scope &amp; duration</li>
+          <li>Car meets, crews &amp; multi-vehicle sessions</li>
+          <li>Pricing scales with coverage</li>
+        </ul>
+        <a href="booking.html?package=car-group" class="link-arrow">Book this <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+    </div>
+
+    <div class="service-addons">
+      <h4>Add-Ons</h4>
+      <ul>
+        <li><span>Custom graphic/poster design</span><span class="addon-price">+$35 each</span></li>
+      </ul>
+    </div>
+    <p class="form-note" style="margin-top:1.5rem;">Final package selection and details are confirmed after booking.</p>
+  </section>
+
+  <!-- PERSONAL SESSIONS -->
+  <section class="service-group">
+    <h2>Personal Sessions</h2>
+    <p class="service-group-desc">Portraits, graduation, and individual sessions.</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <h3>Essential</h3>
+        <p class="service-price">$150</p>
+        <ul class="service-details">
+          <li>1 hour session</li>
+          <li>1 location — studio or outdoor</li>
+          <li>1 outfit</li>
+          <li>12 edited photos</li>
+        </ul>
+        <a href="booking.html?package=personal-essential" class="link-arrow">Book this <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+      <!-- "Most Popular" placeholder default for this section — reassign freely -->
+      <div class="service-card">
+        <span class="badge-popular">Most Popular</span>
+        <h3>Signature</h3>
+        <p class="service-price">$220</p>
+        <ul class="service-details">
+          <li>1.5 hour session</li>
+          <li>1–2 locations — studio or outdoor</li>
+          <li>2 outfits</li>
+          <li>20 edited photos</li>
+        </ul>
+        <a href="booking.html?package=personal-signature" class="link-arrow">Book this <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+      <div class="service-card">
+        <h3>Elite</h3>
+        <p class="service-price">$320</p>
+        <ul class="service-details">
+          <li>2 hour session</li>
+          <li>2 locations — studio or outdoor</li>
+          <li>3 outfits</li>
+          <li>30 edited photos</li>
+          <li>Priority turnaround</li>
+        </ul>
+        <a href="booking.html?package=personal-elite" class="link-arrow">Book this <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+    </div>
+
+    <div class="service-addons">
+      <h4>Add-Ons</h4>
+      <ul>
+        <li><span>Extra edited photo</span><span class="addon-price">$15</span></li>
+        <li><span>Additional outfit</span><span class="addon-price">$25</span></li>
+        <li><span>Additional location</span><span class="addon-price">$40</span></li>
+        <li><span>15-second cinematic reel</span><span class="addon-price">$50</span></li>
+        <li><span>Custom graphic/poster design</span><span class="addon-price">+$35</span></li>
+      </ul>
+    </div>
+    <p class="form-note" style="margin-top:1.5rem;">Not sure where to shoot? I can help find a location that fits your vision — just mention it when you book.</p>
+  </section>
+
+  <!-- BRAND / LOOKBOOK SESSIONS -->
+  <section class="service-group">
+    <h2>Brand &amp; Lookbook Sessions</h2>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <h3>Essential Branding</h3>
+        <p class="service-price">$180</p>
+        <ul class="service-details">
+          <li>60 min session</li>
+          <li>1 location — studio or outdoor</li>
+          <li>1 outfit</li>
+          <li>24 edited photos</li>
+          <li>6 product shoots</li>
+          <li>Online gallery</li>
+          <li>Posing guidance</li>
+        </ul>
+        <a href="booking.html?package=brand-essential" class="link-arrow">Book this <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+      <!-- "Most Popular" placeholder default for this section — reassign freely -->
+      <div class="service-card">
+        <span class="badge-popular">Most Popular</span>
+        <h3>Signature Branding</h3>
+        <p class="service-price">$240</p>
+        <ul class="service-details">
+          <li>75 min session</li>
+          <li>1–2 locations — studio or outdoor</li>
+          <li>2 outfits</li>
+          <li>60 edited photos</li>
+          <li>12 product shoots</li>
+          <li>15-second cinematic reel</li>
+          <li>BTS</li>
+          <li>Online gallery</li>
+          <li>Posing guidance</li>
+        </ul>
+        <a href="booking.html?package=brand-signature" class="link-arrow">Book this <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+      <div class="service-card">
+        <h3>Elite Branding</h3>
+        <p class="service-price">$350</p>
+        <ul class="service-details">
+          <li>3 hour session</li>
+          <li>2 locations — studio or outdoor</li>
+          <li>3 outfits</li>
+          <li>100 edited photos</li>
+          <li>20 product shoots</li>
+          <li>2x 15-sec reel or 1x 30-sec reel</li>
+          <li>BTS</li>
+          <li>Posing guidance</li>
+          <li>Priority turnaround</li>
+        </ul>
+        <a href="booking.html?package=brand-elite" class="link-arrow">Book this <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+    </div>
+
+    <div class="service-addons">
+      <h4>Add-Ons</h4>
+      <ul>
+        <li><span>Extra edited photo</span><span class="addon-price">$15</span></li>
+        <li><span>Additional outfit</span><span class="addon-price">$25</span></li>
+        <li><span>Custom graphic/poster design</span><span class="addon-price">+$35</span></li>
+      </ul>
+    </div>
+    <p class="form-note" style="margin-top:1.5rem;">Not sure where to shoot? I can help find a location that fits your vision — just mention it when you book.</p>
+  </section>
+</main>
+
+<div data-include="components/footer.html"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

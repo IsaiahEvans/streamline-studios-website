@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Streamline Studios</title>
+<meta name="description" content="Meet Isaiah, the photographer and videographer behind Streamline Studios — cinematic car and lifestyle work in Charlotte, NC.">
+<meta property="og:title" content="About — Streamline Studios">
+<meta property="og:description" content="Meet Isaiah, the photographer and videographer behind Streamline Studios — cinematic car and lifestyle work in Charlotte, NC.">
+<!-- TODO: og:image and og:url use relative paths for now — swap in absolute URLs (https://your-domain/...) once the site is live -->
+<meta property="og:image" content="assets/img/og-preview.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="about.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About — Streamline Studios">
+<meta name="twitter:description" content="Meet Isaiah, the photographer and videographer behind Streamline Studios — cinematic car and lifestyle work in Charlotte, NC.">
+<meta name="twitter:image" content="assets/img/og-preview.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+<link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div data-include="components/header.html"></div>
+
+<main>
+
+  <div style="max-width:var(--max); margin:0 auto; padding:10rem clamp(1.25rem, 4vw, 3rem) 0;">
+    <p class="eyebrow">ABOUT</p>
+    <h1 style="font-size:clamp(2.5rem, 6vw, 4.5rem);">Isaiah Evans</h1>
+  </div>
+
+  <!-- SECTION 1: Intro -->
+  <section class="about-teaser">
+    <div class="about-media">
+      <img class="about-photo" src="assets/img/isaiah-portrait.jpg" alt="Isaiah, founder of Streamline Studios" loading="lazy">
+    </div>
+    <div class="about-copy">
+      <p class="about-para" style="max-width:52ch;">
+        I'm Isaiah — the photographer behind Streamline Studios. I create bold, clean imagery that
+        feels real, cinematic, and intentional. I work with individuals, couples, brands, and
+        automotive clients who want visuals that stand out without feeling over-posed or forced.
+        Whether it's a graduation, event, brand shoot, or car feature, my goal is simple: guide you
+        through the process, keep it stress-free, and deliver visuals you're proud to share.
+      </p>
+    </div>
+  </section>
+
+  <div class="light-streak" aria-hidden="true"></div>
+
+  <!-- SECTION 2: Origin story — styled as a distinct "in his own words" aside -->
+  <section class="about-origin">
+    <blockquote class="about-aside">
+      I actually picked up my first camera for a Twitch facecam, not for photography. Once I had it
+      in my hands, I started snapping pics for fun on the side — and that side thing led me straight
+      into Charlotte's car meet scene. Something about the energy at those meets, the way people take
+      pride in their builds, pulled me in fast. What started as a random idea turned into Streamline
+      Studios, built shoot by shoot alongside the same community that got me hooked in the first place.
+    </blockquote>
+  </section>
+
+  <div class="light-streak" aria-hidden="true"></div>
+
+  <!-- SECTION 3: How I Work — reversed split (text left, image right) -->
+  <section class="about-teaser">
+    <div class="about-copy">
+      <h2>How I Work</h2>
+      <p class="about-para" style="max-width:48ch;">
+        Every shoot starts with understanding what you want and how you plan to use your images. I
+        help with posing, locations, and direction so you never feel awkward or unsure. Turnaround is
+        fast, communication is clear, and the final gallery is delivered ready for social media, web,
+        or print.
+      </p>
+    </div>
+    <div class="about-media">
+      <img class="about-photo" src="assets/img/isaiah-2.jpg" alt="Isaiah editing at a cafe" loading="lazy">
+    </div>
+  </section>
+
+</main>
+
+<div data-include="components/footer.html"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

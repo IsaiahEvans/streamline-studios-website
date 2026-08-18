@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Shoot — Streamline Studios</title>
+<meta name="description" content="Book a car photography or videography session with Streamline Studios in Charlotte, NC.">
+<meta property="og:title" content="Book a Shoot — Streamline Studios">
+<meta property="og:description" content="Book a car photography or videography session with Streamline Studios in Charlotte, NC.">
+<!-- TODO: og:image and og:url use relative paths for now — swap in absolute URLs (https://your-domain/...) once the site is live -->
+<meta property="og:image" content="assets/img/og-preview.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="booking.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Book a Shoot — Streamline Studios">
+<meta name="twitter:description" content="Book a car photography or videography session with Streamline Studios in Charlotte, NC.">
+<meta name="twitter:image" content="assets/img/og-preview.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+<link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div data-include="components/header.html"></div>
+
+<main style="max-width:var(--max); margin:0 auto; padding:10rem clamp(1.25rem, 4vw, 3rem) 6rem;">
+  <p class="eyebrow">GET IN TOUCH</p>
+  <h1 style="font-size:clamp(2.5rem, 6vw, 4.5rem); margin-bottom:1.5rem;">Book a Shoot</h1>
+  <p style="color:var(--smoke); max-width:60ch; margin-bottom:0.75rem;">
+    Ready to book? Fill out the form below and I'll follow up to confirm availability.
+  </p>
+  <a href="services.html" class="link-arrow" style="display:inline-flex; margin-bottom:2.5rem;">
+    See full pricing &amp; package details <span aria-hidden="true">&rarr;</span>
+  </a>
+
+  <!--
+    STRIPE INTEGRATION — TODO
+    Not wired up yet. GitHub Pages only serves static files, so payments need
+    either Stripe Payment Links (no backend, easiest) or a serverless function
+    (for a dynamic booking form that computes price before checkout).
+    See README.md > "Accepting payments (Stripe)" for both options.
+  -->
+
+  <!--
+    ?package= PRE-FILL — live. Links into this page (e.g. "Book this" buttons on
+    services.html) carry a ?package=<slug> query param matching an <option value>
+    below. script.js reads location.search on load and pre-selects the match.
+  -->
+
+  <!--
+    FORM SUBMISSION — TODO
+    This is a static site with no backend, so the form below needs a form
+    endpoint to actually deliver submissions. Sign up for a free Formspree
+    (formspree.io) or Web3Forms (web3forms.com) account, then either:
+      - Formspree: replace the placeholder action URL below with your real
+        endpoint (https://formspree.io/f/YOUR_FORM_ID)
+      - Web3Forms: change the action to https://api.web3forms.com/submit and
+        add a hidden <input type="hidden" name="access_key" value="YOUR_KEY">
+    Until then, submitting this form will fail.
+  -->
+  <form class="booking-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="max-width:640px;">
+    <input type="hidden" name="_subject" value="New booking request — Streamline Studios">
+
+    <div class="form-field">
+      <label for="bk-name">Name *</label>
+      <input type="text" id="bk-name" name="name" required>
+    </div>
+
+    <div class="form-field">
+      <label for="bk-email">Email *</label>
+      <input type="email" id="bk-email" name="email" required>
+    </div>
+
+    <div class="form-field">
+      <label for="bk-phone">Phone</label>
+      <input type="tel" id="bk-phone" name="phone">
+    </div>
+
+    <div class="form-field">
+      <label for="bk-package">Selected Package</label>
+      <select id="bk-package" name="package">
+        <option value="not-sure" selected>Not sure yet</option>
+        <optgroup label="Car Sessions">
+          <option value="car-essentials" data-family="car">Car Essentials</option>
+          <option value="car-signature" data-family="car">Car Signature</option>
+          <option value="car-deluxe" data-family="car">Car Deluxe</option>
+          <option value="car-group" data-family="car">Car Group</option>
+        </optgroup>
+        <optgroup label="Personal Sessions">
+          <option value="personal-essential" data-family="personal">Essential Session</option>
+          <option value="personal-signature" data-family="personal">Signature Session</option>
+          <option value="personal-elite" data-family="personal">Elite Session</option>
+        </optgroup>
+        <optgroup label="Brand &amp; Lookbook">
+          <option value="brand-essential" data-family="brand">Essential Branding</option>
+          <option value="brand-signature" data-family="brand">Signature Branding</option>
+          <option value="brand-elite" data-family="brand">Elite Branding</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <!-- Add-ons — hidden by default; script.js shows the group matching the
+         selected package's data-family, or the car note, or nothing at all. -->
+    <div class="form-field addons-field is-hidden" id="bk-addons">
+      <label>Add-ons</label>
+
+      <p class="addons-note is-hidden" data-addons-for="car">
+        Add-ons for car sessions are confirmed directly with you after booking.
+      </p>
+
+      <div class="addons-checks is-hidden" data-addons-for="personal">
+        <label class="addon-check">
+          <input type="checkbox" value="Extra edited photo (+$15)">
+          <span>Extra edited photo (+$15)</span>
+        </label>
+        <label class="addon-check">
+          <input type="checkbox" value="Additional outfit (+$25)">
+          <span>Additional outfit (+$25)</span>
+        </label>
+        <label class="addon-check">
+          <input type="checkbox" value="Additional location (+$40)">
+          <span>Additional location (+$40)</span>
+        </label>
+        <label class="addon-check">
+          <input type="checkbox" value="15-second cinematic reel (+$50)">
+          <span>15-second cinematic reel (+$50)</span>
+        </label>
+        <label class="addon-check">
+          <input type="checkbox" value="Custom graphic/poster design (+$35)">
+          <span>Custom graphic/poster design (+$35)</span>
+        </label>
+      </div>
+
+      <div class="addons-checks is-hidden" data-addons-for="brand">
+        <label class="addon-check">
+          <input type="checkbox" value="Extra edited photo (+$15)">
+          <span>Extra edited photo (+$15)</span>
+        </label>
+        <label class="addon-check">
+          <input type="checkbox" value="Additional outfit (+$25)">
+          <span>Additional outfit (+$25)</span>
+        </label>
+      </div>
+
+      <input type="hidden" id="bk-addons-summary" name="addons_requested" value="">
+    </div>
+
+    <!-- Location preference — separate from the add-ons group above (own
+         visibility toggle in script.js), shown only for Personal/Branding
+         since Car sessions are inherently location/meet-based already. -->
+    <div class="form-field is-hidden" id="bk-location-pref">
+      <label for="bk-location-preference">Location Preference</label>
+      <select id="bk-location-preference" name="location_preference">
+        <option value="Studio">Studio</option>
+        <option value="Outdoor">Outdoor</option>
+        <option value="Either / help me choose">Either / Help me choose</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="bk-date">Preferred Date</label>
+      <input type="date" id="bk-date" name="preferred_date">
+    </div>
+
+    <div class="form-field">
+      <label for="bk-location">Preferred Location</label>
+      <input type="text" id="bk-location" name="preferred_location">
+    </div>
+
+    <div class="form-field">
+      <label for="bk-message">Message</label>
+      <textarea id="bk-message" name="message" placeholder="Anything else I should know?"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-solid">Send Booking Request</button>
+    <p class="form-note">Submissions go straight to my inbox — I'll follow up within a day or two.</p>
+  </form>
+
+  <div class="light-streak" aria-hidden="true"></div>
+
+  <!--
+    FORM SUBMISSION — TODO
+    This is a static site with no backend, so the form below needs a form
+    endpoint to actually deliver submissions. Sign up for a free Formspree
+    (formspree.io) or Web3Forms (web3forms.com) account, then either:
+      - Formspree: replace the placeholder action URL below with your real
+        endpoint (https://formspree.io/f/YOUR_FORM_ID)
+      - Web3Forms: change the action to https://api.web3forms.com/submit and
+        add a hidden <input type="hidden" name="access_key" value="YOUR_KEY">
+    Until then, submitting this form will fail.
+  -->
+  <section class="events-inquiry">
+    <div class="events-grid">
+
+      <div class="events-intro">
+        <p class="eyebrow">CAR MEETS &amp; GROUP COVERAGE</p>
+        <h2>Car Meets &amp; Special Events</h2>
+        <p>
+          I build coverage around what's actually happening at your event — the timeline, the location,
+          how many cars are rolling through. I keep my event calendar limited on purpose, so every event
+          gets my full attention instead of a rushed once-over. I'm there to catch real moments, not to
+          force everyone into a lineup shot.
+        </p>
+        <p>
+          <a href="services.html#car-group" style="color:var(--brass-bright);">Car Group</a> sessions
+          start at <strong style="color:var(--brass-bright);">$250</strong> and cover meets, cruises,
+          brand activations, and group shoots — final scope depends on your event, so tell me about it below.
+        </p>
+
+        <div class="events-photos">
+          <div class="events-photo">
+            <img src="assets/img/portfolio-events-1.jpg" alt="Blue Lotus Emira front three-quarter view at a car show" loading="lazy">
+          </div>
+          <div class="events-photo">
+            <img src="assets/img/portfolio-events-2.jpg" alt="Blue Lotus Emira with door open at a car show" loading="lazy">
+          </div>
+          <div class="events-photo">
+            <img src="assets/img/portfolio-events-4.jpg" alt="Silver BMW M4 front detail at dusk" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <form class="events-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="hidden" name="_subject" value="New event inquiry — Streamline Studios">
+
+        <div class="form-field">
+          <label for="ev-name">Name *</label>
+          <input type="text" id="ev-name" name="name" required>
+        </div>
+
+        <div class="form-field">
+          <label for="ev-email">Email *</label>
+          <input type="email" id="ev-email" name="email" required>
+        </div>
+
+        <div class="form-field">
+          <label for="ev-type">Event Type</label>
+          <select id="ev-type" name="event_type">
+            <option value="Car meet / cruise">Car meet / cruise</option>
+            <option value="Brand activation">Brand activation</option>
+            <option value="Group shoot">Group shoot</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="ev-date">Event Date</label>
+          <input type="date" id="ev-date" name="event_date">
+        </div>
+
+        <div class="form-field">
+          <label for="ev-message">Message *</label>
+          <textarea id="ev-message" name="message" required placeholder="Tell me about your event"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-solid">Send Inquiry</button>
+        <p class="form-note">Submissions go straight to my inbox — I'll follow up within a day or two.</p>
+      </form>
+
+    </div>
+  </section>
+</main>
+
+<div data-include="components/footer.html"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

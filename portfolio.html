@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Streamline Studios</title>
+<meta name="description" content="Streamline Studios portfolio — car photography, graduation, brand/lookbook, event coverage, and feature graphics in Charlotte, NC.">
+<meta property="og:title" content="Portfolio — Streamline Studios">
+<meta property="og:description" content="Streamline Studios portfolio — car photography, graduation, brand/lookbook, event coverage, and feature graphics in Charlotte, NC.">
+<!-- TODO: og:image and og:url use relative paths for now — swap in absolute URLs (https://your-domain/...) once the site is live -->
+<meta property="og:image" content="assets/img/og-preview.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="portfolio.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portfolio — Streamline Studios">
+<meta name="twitter:description" content="Streamline Studios portfolio — car photography, graduation, brand/lookbook, event coverage, and feature graphics in Charlotte, NC.">
+<meta name="twitter:image" content="assets/img/og-preview.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+<link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div data-include="components/header.html"></div>
+
+<main style="max-width:var(--max); margin:0 auto; padding:10rem clamp(1.25rem, 4vw, 3rem) 6rem;">
+  <p class="eyebrow">FULL PORTFOLIO</p>
+  <h1 style="font-size:clamp(2.5rem, 6vw, 4.5rem); margin-bottom:2rem;">Portfolio</h1>
+  <p style="color:var(--smoke); max-width:60ch; margin-bottom:2.5rem;">
+    Browse by category, or view everything. Click any photo for a closer look.
+  </p>
+
+  <div class="portfolio-filters" role="group" aria-label="Filter portfolio by category">
+    <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="filter-btn" data-filter="cars" aria-pressed="false">Car Photography</button>
+    <button type="button" class="filter-btn" data-filter="graduation" aria-pressed="false">Graduation</button>
+    <button type="button" class="filter-btn" data-filter="lookbook" aria-pressed="false">Brand / Lookbook</button>
+    <button type="button" class="filter-btn" data-filter="events" aria-pressed="false">Events</button>
+    <button type="button" class="filter-btn" data-filter="design" aria-pressed="false">Feature Graphics</button>
+    <button type="button" class="filter-btn" data-filter="personal" aria-pressed="false">Personal</button>
+  </div>
+  <!-- Category notes — script.js shows only the one matching the active filter -->
+  <p class="form-note is-hidden" data-note-for="design" style="margin-bottom:2rem;">Want a piece like this for your car? Available as an add-on — see <a href="services.html" style="color:var(--brass-bright);">Services</a>.</p>
+  <p class="form-note is-hidden" data-note-for="personal" style="margin-bottom:2rem;">Portraits, birthdays, and life's other moments — see <a href="services.html" style="color:var(--brass-bright);">Personal Sessions</a> pricing.</p>
+
+  <div class="portfolio-grid">
+
+    <!-- Car Photography -->
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-1.jpg" alt="Black Mustang at night with glowing blue LED headlights" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-2.jpg" alt="Black BMW M2 parked under a tree at dusk" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-3.jpg" alt="Blue Toyota Supra at dusk under a dramatic sky" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-4.jpg" alt="Close-up of a purple widebody sports car's wheel and fender" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-5.jpg" alt="Pink flame-wrap Nissan S14 side profile" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-6.jpg" alt="Close-up of a yellow Lexus RC's front wheel and fender" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-7.jpg" alt="Black Acura wagon with roof box in an autumn forest setting" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-8.jpg" alt="Red BMW M2 at a foggy night car meet" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-9.jpg" alt="Red Ford Mustang GT at golden hour in a park" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-10.jpg" alt="Dark Ford Explorer ST on a downtown street at blue hour" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-11.jpg" alt="Blue Nissan Skyline and Silvia inside an indoor car show garage" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-12.jpg" alt="Blue Nissan Skyline GT-R with underglow at an indoor car show" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-13.jpg" alt="Yellow Lamborghini Aventador SVJ at a drag strip" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-14.jpg" alt="Blue camo-wrapped Aston Martin Vantage with shark graphic at a car show" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-15.jpg" alt="American flag-wrapped Mustang drifting on a race track" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-16.jpg" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-17.jpg" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-18.jpg" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-19.jpg" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-20.webp" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-21.jpg" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-22.jpg" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-23.jpg" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-24.jpg" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-25.jpg" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-26.jpg" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-27.jpg" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-28.jpg" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-29.jpg" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="cars">
+      <img class="tile-media" src="assets/img/portfolio-cars-30.jpg" alt="Car photography" loading="lazy">
+      <span class="tile-label">Car Photography</span>
+    </button>
+
+    <!-- Graduation -->
+    <button type="button" class="portfolio-tile" data-category="graduation">
+      <img class="tile-media" src="assets/img/portfolio-grad-1.jpg" alt="Graduate with family in cap and gown on campus lawn" loading="lazy">
+      <span class="tile-label">Graduation</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="graduation">
+      <img class="tile-media" src="assets/img/portfolio-grad-2.jpg" alt="Graduate celebrating with friends on campus" loading="lazy">
+      <span class="tile-label">Graduation</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="graduation">
+      <img class="tile-media" src="assets/img/portfolio-grad-3.jpg" alt="Graduate portrait with diploma on campus" loading="lazy">
+      <span class="tile-label">Graduation</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="graduation">
+      <img class="tile-media" src="assets/img/portfolio-grad-4.jpg" alt="Graduate in cap and gown seated on a brick wall" loading="lazy">
+      <span class="tile-label">Graduation</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="graduation">
+      <img class="tile-media" src="assets/img/portfolio-grad-5.jpg" alt="Graduate holding cap in a garden setting" loading="lazy">
+      <span class="tile-label">Graduation</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="graduation">
+      <img class="tile-media" src="assets/img/portfolio-grad-6.png" alt="Graduation photography" loading="lazy">
+      <span class="tile-label">Graduation</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="graduation">
+      <img class="tile-media" src="assets/img/portfolio-grad-7.png" alt="Graduation photography" loading="lazy">
+      <span class="tile-label">Graduation</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="graduation">
+      <img class="tile-media" src="assets/img/portfolio-grad-8.png" alt="Graduation photography" loading="lazy">
+      <span class="tile-label">Graduation</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="graduation">
+      <img class="tile-media" src="assets/img/portfolio-grad-9.png" alt="Graduation photography" loading="lazy">
+      <span class="tile-label">Graduation</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="graduation">
+      <img class="tile-media" src="assets/img/portfolio-grad-10.png" alt="Graduation photography" loading="lazy">
+      <span class="tile-label">Graduation</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="graduation">
+      <img class="tile-media" src="assets/img/portfolio-grad-11.png" alt="Graduation photography" loading="lazy">
+      <span class="tile-label">Graduation</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="graduation">
+      <img class="tile-media" src="assets/img/portfolio-grad-12.png" alt="Graduation photography" loading="lazy">
+      <span class="tile-label">Graduation</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="graduation">
+      <img class="tile-media" src="assets/img/portfolio-grad-13.png" alt="Graduation photography" loading="lazy">
+      <span class="tile-label">Graduation</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="graduation">
+      <img class="tile-media" src="assets/img/portfolio-grad-14.png" alt="Graduation photography" loading="lazy">
+      <span class="tile-label">Graduation</span>
+    </button>
+
+    <!-- Brand / Lookbook -->
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-1.jpg" alt="Streetwear brand lookbook shoot with skateboards" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-2.jpg" alt="Gritty low-angle detail shot for a streetwear brand shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-3.jpg" alt="Model portrait with colored gel lighting for a denim brand shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-4.jpg" alt="Model shot from behind wearing branded graphic tee on a balcony" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-5.jpg" alt="Portrait of model wearing branded hoodie for a streetwear shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-6.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-7.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-8.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-9.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-10.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-11.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-12.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-13.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-14.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-15.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-16.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-17.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-18.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-19.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-20.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-21.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="lookbook">
+      <img class="tile-media" src="assets/img/portfolio-lookbook-22.jpg" alt="Brand lookbook shoot" loading="lazy">
+      <span class="tile-label">Brand / Lookbook</span>
+    </button>
+
+    <!-- Events — spans car meets/groups AND general gatherings now, so tile
+         labels are specific per photo rather than a blanket "Events". -->
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-1.jpg" alt="Modified car parked at a car meet" loading="lazy">
+      <span class="tile-label">Car Meet</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-2.jpg" alt="Modified car parked at a car meet" loading="lazy">
+      <span class="tile-label">Car Meet</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-3.jpg" alt="Car meet attendees browsing parked cars" loading="lazy">
+      <span class="tile-label">Car Meet</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-4.jpg" alt="Modified car parked at a car meet" loading="lazy">
+      <span class="tile-label">Car Meet</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-5.png" alt="Modified car parked at a car meet" loading="lazy">
+      <span class="tile-label">Car Meet</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-6.jpg" alt="White widebody Ferrari 458 at a car show outside L.P. Frans Stadium" loading="lazy">
+      <span class="tile-label">Car Show</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-7.jpg" alt="Four modified Ford Mustangs lined up at evening" loading="lazy">
+      <span class="tile-label">Car Group</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-8.jpg" alt="Six Ford Mustangs lined up at golden hour" loading="lazy">
+      <span class="tile-label">Car Group</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-9.jpg" alt="Candid hug between two colleagues at a retirement celebration" loading="lazy">
+      <span class="tile-label">Retirement Party</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-10.jpg" alt="Expecting mother with her two sons at a pink baby shower backdrop" loading="lazy">
+      <span class="tile-label">Baby Shower</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-11.jpg" alt="Lineup of modified cars inside a garage bay at a car meet" loading="lazy">
+      <span class="tile-label">Car Meet</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-12.jpg" alt="Bride ascending brick stairs, veil flowing, overcast sky" loading="lazy">
+      <span class="tile-label">Wedding</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-13.jpg" alt="Bride and groom portrait with bouquet, smiling" loading="lazy">
+      <span class="tile-label">Wedding</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-14.jpg" alt="Bride and groom portrait on brick steps with flowing veil" loading="lazy">
+      <span class="tile-label">Wedding</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-15.jpg" alt="Retirement celebration banner graphic with group photo and text overlay" loading="lazy">
+      <span class="tile-label">Retirement Party</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-16.jpg" alt="Retirement celebration guest smiling with a lit sparkler" loading="lazy">
+      <span class="tile-label">Retirement Party</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-17.jpg" alt="Candid conversation between retirement party guests" loading="lazy">
+      <span class="tile-label">Retirement Party</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-18.jpg" alt="Full family portrait at a baby shower with pink balloon backdrop" loading="lazy">
+      <span class="tile-label">Baby Shower</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="events">
+      <img class="tile-media" src="assets/img/portfolio-events-19.jpg" alt="Expecting mother with her two sons at a baby shower, close crop" loading="lazy">
+      <span class="tile-label">Baby Shower</span>
+    </button>
+
+    <!-- Feature Graphics — typographic/editorial pieces (photo + stat callouts,
+         custom type, color treatment), distinct from straight photography. -->
+    <button type="button" class="portfolio-tile" data-category="design">
+      <img class="tile-media" src="assets/img/portfolio-design-1.jpg" width="1638" height="2048" alt="S58 engine feature graphic for a BMW M3 Competition" loading="lazy">
+      <span class="tile-label">Feature Graphics</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="design">
+      <img class="tile-media" src="assets/img/portfolio-design-2.jpg" width="1638" height="2048" alt="S63 engine feature graphic for a BMW M8 Competition" loading="lazy">
+      <span class="tile-label">Feature Graphics</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="design">
+      <img class="tile-media" src="assets/img/portfolio-design-3.jpg" width="1638" height="2048" alt="LT6 engine feature graphic for a Corvette Z06" loading="lazy">
+      <span class="tile-label">Feature Graphics</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="design">
+      <img class="tile-media" src="assets/img/portfolio-design-4.jpg" width="1638" height="2048" alt="Feature graphic for a BMW M2 (G87)" loading="lazy">
+      <span class="tile-label">Feature Graphics</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="design">
+      <img class="tile-media" src="assets/img/portfolio-design-5.jpg" width="1638" height="2048" alt="HEMI engine feature graphic for a Chrysler 300" loading="lazy">
+      <span class="tile-label">Feature Graphics</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="design">
+      <img class="tile-media" src="assets/img/portfolio-design-6.jpg" alt="Car graphic design piece" loading="lazy">
+      <span class="tile-label">Feature Graphics</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="design">
+      <img class="tile-media" src="assets/img/portfolio-design-7.jpg" alt="Car graphic design piece" loading="lazy">
+      <span class="tile-label">Feature Graphics</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="design">
+      <img class="tile-media" src="assets/img/portfolio-design-8.png" alt="Car graphic design piece" loading="lazy">
+      <span class="tile-label">Feature Graphics</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="design">
+      <img class="tile-media" src="assets/img/portfolio-design-9.png" alt="Car graphic design piece" loading="lazy">
+      <span class="tile-label">Feature Graphics</span>
+    </button>
+
+    <!-- Personal — portraits, birthdays, and other individual/life-event
+         sessions. Specific per-photo labels, same reasoning as Events. -->
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-1.jpg" alt="Birthday portrait session, gold dress, holding red flowers" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-2.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-3.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-4.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-5.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-6.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-7.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-8.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-9.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-10.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-11.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-12.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-13.jpg" alt="Birthday portrait session, golden hour" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-14.jpg" alt="Birthday portrait session, pink outfit, golden hour" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-15.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-16.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-17.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-18.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-19.jpg" alt="Birthday portrait session" loading="lazy">
+      <span class="tile-label">Birthday Session</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-20.jpg" alt="Portrait session" loading="lazy">
+      <span class="tile-label">Portrait</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-21.jpg" alt="Portrait session" loading="lazy">
+      <span class="tile-label">Portrait</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-22.jpg" alt="Portrait session" loading="lazy">
+      <span class="tile-label">Portrait</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-23.jpg" alt="Portrait session" loading="lazy">
+      <span class="tile-label">Portrait</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-24.jpg" alt="Portrait session" loading="lazy">
+      <span class="tile-label">Portrait</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-25.jpg" alt="Portrait session" loading="lazy">
+      <span class="tile-label">Portrait</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-26.jpg" alt="Portrait session" loading="lazy">
+      <span class="tile-label">Portrait</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-27.jpg" alt="Portrait session" loading="lazy">
+      <span class="tile-label">Portrait</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-28.jpg" alt="Portrait session" loading="lazy">
+      <span class="tile-label">Portrait</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-29.jpg" alt="Portrait session" loading="lazy">
+      <span class="tile-label">Portrait</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-30.jpg" alt="Kickboxing match" loading="lazy">
+      <span class="tile-label">Kickboxing Match</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-31.jpg" alt="Kickboxing match" loading="lazy">
+      <span class="tile-label">Kickboxing Match</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-32.jpg" alt="Kickboxing match" loading="lazy">
+      <span class="tile-label">Kickboxing Match</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-33.jpg" alt="Kickboxing match" loading="lazy">
+      <span class="tile-label">Kickboxing Match</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-34.jpg" alt="Kickboxing match" loading="lazy">
+      <span class="tile-label">Kickboxing Match</span>
+    </button>
+    <button type="button" class="portfolio-tile" data-category="personal">
+      <img class="tile-media" src="assets/img/portfolio-personal-35.jpg" alt="Kickboxing match" loading="lazy">
+      <span class="tile-label">Kickboxing Match</span>
+    </button>
+
+  </div>
+</main>
+
+<div class="lightbox" hidden>
+  <div class="lightbox-scrim"></div>
+  <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+  <button type="button" class="lightbox-arrow lightbox-arrow--prev" aria-label="Previous image">&larr;</button>
+  <img class="lightbox-media" alt="">
+  <button type="button" class="lightbox-arrow lightbox-arrow--next" aria-label="Next image">&rarr;</button>
+  <p class="lightbox-caption"></p>
+</div>
+
+<div data-include="components/footer.html"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,511 @@
+/* ============================================
+   STREAMLINE STUDIOS — DESIGN TOKENS
+   Palette: void/panel (near-black), ivory (text),
+   chrome (cool silver line/UI), brass (signature accent)
+   Type: Big Shoulders Display (headings, gauge-like),
+         Work Sans (body), JetBrains Mono (labels/eyebrows)
+   ============================================ */
+:root{
+  --void:   #0a0a0b;
+  --panel:  #141416;
+  --panel-2:#1b1b1e;
+  --ivory:  #edeae2;
+  --smoke:  #8b8e93;
+  --chrome: #c8cdd2;
+  --brass:  #a9834b;
+  --brass-bright: #cf9e5f;
+  --img-placeholder: #2f6fed;
+
+  --f-display: 'Big Shoulders Display', sans-serif;
+  --f-body: 'Work Sans', sans-serif;
+  --f-mono: 'JetBrains Mono', monospace;
+
+  --max: 1240px;
+  --gap: clamp(1.5rem, 4vw, 3rem);
+  --radius: 2px;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--void);
+  color:var(--ivory);
+  font-family:var(--f-body);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  color-scheme:dark;
+}
+img, .bg-img{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+h1,h2,h3{ font-family:var(--f-display); font-weight:700; text-transform:uppercase; letter-spacing:0.01em; line-height:0.95; }
+.center{ text-align:center; margin-left:auto; margin-right:auto; }
+
+.eyebrow{
+  font-family:var(--f-mono);
+  font-size:0.72rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--brass-bright);
+  margin-bottom:0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+}
+
+:focus-visible{ outline:2px solid var(--brass-bright); outline-offset:3px; }
+
+/* ---------- NAV ---------- */
+.site-nav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.25rem clamp(1.25rem, 4vw, 3rem);
+  background:linear-gradient(to bottom, rgba(10,10,11,0.85), transparent);
+}
+.nav-mark{
+  font-family:var(--f-display); font-weight:700; font-size:1.35rem;
+  letter-spacing:0.06em; color:var(--ivory);
+}
+.nav-links{ display:flex; align-items:center; gap:2rem; font-family:var(--f-mono); font-size:0.8rem; letter-spacing:0.06em; text-transform:uppercase; }
+.nav-links a{ color:var(--chrome); transition:color 0.2s; }
+.nav-links a:hover{ color:var(--brass-bright); }
+.nav-cta{
+  color:var(--void) !important; background:var(--brass);
+  padding:0.55rem 1.1rem; border-radius:var(--radius);
+}
+.nav-cta:hover{ background:var(--brass-bright); }
+.nav-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:0; cursor:pointer; padding:0.5rem; }
+.nav-toggle span{ width:24px; height:2px; background:var(--ivory); display:block; }
+
+/* ---------- BUTTONS ---------- */
+.btn{
+  display:inline-block; font-family:var(--f-mono); font-size:0.8rem;
+  letter-spacing:0.08em; text-transform:uppercase;
+  padding:0.9rem 1.9rem; border-radius:var(--radius);
+  border:1px solid var(--chrome); transition:all 0.25s ease;
+}
+.btn-ghost{ color:var(--ivory); border-color:rgba(200,205,210,0.5); background:rgba(255,255,255,0.02); }
+.btn-ghost:hover{ border-color:var(--brass-bright); color:var(--brass-bright); }
+.btn-solid{ color:var(--void); background:var(--brass); border-color:var(--brass); font-weight:600; }
+.btn-solid:hover{ background:var(--brass-bright); border-color:var(--brass-bright); }
+.btn-center{ display:table; margin:2.5rem auto 0; }
+
+/* ---------- SIGNATURE: LIGHT STREAK DIVIDER ---------- */
+.light-streak{
+  position:relative; height:1px; margin:0 auto; max-width:var(--max);
+  background:linear-gradient(to right, transparent, rgba(200,205,210,0.25), transparent);
+  overflow:hidden;
+}
+.light-streak::after{
+  content:''; position:absolute; top:0; left:-30%; width:30%; height:100%;
+  background:linear-gradient(to right, transparent, var(--brass-bright), transparent);
+  animation:streak 4.5s ease-in-out infinite;
+  opacity:0.9;
+}
+@keyframes streak{
+  0%{ left:-30%; }
+  55%{ left:100%; }
+  100%{ left:100%; }
+}
+
+/* ============================================
+   1. HERO
+   ============================================ */
+.hero{ position:relative; height:100svh; min-height:560px; display:flex; align-items:flex-end; overflow:hidden; }
+.hero-media{
+  position:absolute; inset:0; background-size:cover; background-position:center;
+  background-color:var(--img-placeholder);
+}
+.hero-scrim{
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(10,10,11,0.95) 5%, rgba(10,10,11,0.35) 45%, rgba(10,10,11,0.55) 100%);
+}
+.hero-content{
+  position:relative; z-index:2; width:100%; max-width:var(--max);
+  margin:0 auto; padding:0 clamp(1.25rem, 4vw, 3rem) 5rem; text-align:center;
+}
+.hero-mark{
+  font-size:clamp(3rem, 11vw, 7.5rem); color:var(--ivory);
+}
+.hero-mark span{ display:block; color:var(--brass-bright); font-size:0.5em; letter-spacing:0.15em; }
+.hero-actions{ display:flex; gap:1rem; justify-content:center; margin-top:2rem; flex-wrap:wrap; }
+.scroll-cue{
+  position:absolute; bottom:1.5rem; left:50%; transform:translateX(-50%); z-index:2;
+  width:1px; height:40px; background:rgba(237,234,226,0.35);
+}
+.scroll-cue span{
+  position:absolute; top:0; left:-2px; width:5px; height:5px; border-radius:50%;
+  background:var(--brass-bright); animation:cue 2s ease-in-out infinite;
+}
+@keyframes cue{ 0%{ top:0; opacity:1;} 100%{ top:36px; opacity:0;} }
+
+/* ============================================
+   2. ABOUT TEASER
+   ============================================ */
+.about-teaser{
+  display:grid; grid-template-columns:0.85fr 1.15fr; gap:var(--gap);
+  max-width:var(--max); margin:0 auto; padding:6rem clamp(1.25rem, 4vw, 3rem);
+  align-items:center;
+}
+.about-photo{
+  display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center;
+  background-color:var(--img-placeholder); border-radius:var(--radius);
+}
+.about-copy h2{ font-size:clamp(2rem, 4vw, 3rem); margin-bottom:1.25rem; }
+.about-para{ color:var(--smoke); max-width:46ch; margin-bottom:1.5rem; }
+
+/* ---------- ABOUT PAGE: ORIGIN STORY ASIDE ---------- */
+.about-origin{ max-width:var(--max); margin:0 auto; padding:2rem clamp(1.25rem, 4vw, 3rem) 4rem; }
+.about-aside{
+  max-width:640px; margin:0 auto; padding:0.25rem clamp(1.5rem, 3vw, 2.5rem);
+  border-left:3px solid var(--brass);
+  font-size:1.1rem; line-height:1.85; color:var(--ivory);
+}
+.link-arrow{
+  font-family:var(--f-mono); font-size:0.85rem; letter-spacing:0.06em;
+  text-transform:uppercase; color:var(--brass-bright); display:inline-flex; gap:0.5rem;
+  border-bottom:1px solid transparent; transition:border-color 0.2s;
+}
+.link-arrow:hover{ border-color:var(--brass-bright); }
+
+/* ============================================
+   3. TESTIMONIALS
+   ============================================ */
+.testimonials{ margin:0; }
+.testimonial-slider{ position:relative; }
+.testimonial-track{ position:relative; height:clamp(560px, 80vh, 900px); }
+.testimonial-card{
+  display:none; position:absolute; inset:0;
+  grid-template-columns:minmax(320px, 36%) 1fr;
+}
+.testimonial-card.is-active{ display:grid; }
+.testimonial-text{
+  background:var(--panel);
+  display:flex; flex-direction:column; justify-content:space-between;
+  padding:clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem);
+}
+.testimonial-text .eyebrow{ margin-bottom:1rem; }
+.testimonial-text h2{ font-size:clamp(1.6rem, 2.4vw, 2.2rem); margin-bottom:2rem; }
+.testimonial-text blockquote{
+  font-size:1.05rem; font-weight:400; color:var(--ivory); line-height:1.6; max-width:42ch;
+}
+.testimonial-footer{ display:flex; align-items:center; flex-wrap:wrap; gap:1rem; margin-top:2rem; }
+.testimonial-footer cite{ font-family:var(--f-mono); font-size:0.8rem; color:var(--smoke); font-style:normal; }
+.testimonial-nav{ display:flex; gap:0.5rem; margin-left:auto; }
+.testimonial-nav .slide-arrow{ width:32px; height:32px; font-size:0.8rem; }
+.testimonial-media{ position:relative; overflow:hidden; }
+.testimonial-img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;
+  background-color:var(--img-placeholder);
+}
+.slide-arrow{
+  flex-shrink:0; width:44px; height:44px; border-radius:50%; background:transparent;
+  border:1px solid var(--chrome); color:var(--ivory); cursor:pointer; font-size:1rem;
+  transition:all 0.2s;
+}
+.slide-arrow:hover{ border-color:var(--brass-bright); color:var(--brass-bright); }
+.slide-dots{ display:flex; gap:0.5rem; justify-content:center; margin-top:2rem; }
+.slide-dots button{
+  width:7px; height:7px; border-radius:50%; border:0; background:var(--panel-2); cursor:pointer;
+}
+.slide-dots button.is-active{ background:var(--brass-bright); }
+
+/* ============================================
+   4. PORTFOLIO GRID (editorial masonry)
+   ============================================ */
+.portfolio-preview{ max-width:var(--max); margin:0 auto; padding:6rem clamp(1.25rem, 4vw, 3rem); }
+.portfolio-preview h2{ font-size:clamp(2rem, 4vw, 3rem); margin-bottom:3rem; }
+
+/* Full gallery (portfolio.html): TRUE masonry via CSS columns — each tile's
+   box height comes from its image's real aspect ratio, not a forced crop.
+   break-inside:avoid keeps a tile from splitting across two columns; the
+   stacking gap within a column comes from margin-bottom since multicol has
+   no native row-gap. Column count is responsive — see RESPONSIVE below. */
+.portfolio-grid{
+  column-count:4;
+  column-gap:1rem;
+}
+.portfolio-tile{
+  position:relative; display:block; width:100%;
+  overflow:hidden; border-radius:var(--radius);
+  break-inside:avoid; margin-bottom:1rem;
+}
+.tile-media{
+  display:block; width:100%; height:auto;
+  background-color:var(--img-placeholder); transition:transform 0.5s ease;
+}
+.portfolio-tile:hover .tile-media{ transform:scale(1.06); }
+.portfolio-tile::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(10,10,11,0.85), rgba(10,10,11,0) 55%);
+}
+.tile-label{
+  position:absolute; left:0.7rem; bottom:0.7rem; z-index:2;
+  font-family:var(--f-mono); font-size:0.66rem; letter-spacing:0.04em;
+  text-transform:uppercase; color:var(--ivory);
+}
+button.portfolio-tile{
+  appearance:none; border:0; background:none; padding:0;
+  font:inherit; color:inherit; text-align:left; cursor:pointer;
+}
+.portfolio-tile.is-hidden{ display:none; }
+
+/* Homepage preview: fixed 4-tile layout (1 featured + 3 supporting) — kept
+   as the old fixed-crop CSS Grid mosaic, explicitly scoped so it's unaffected
+   by the masonry rules above (which target the same shared class names on
+   the full gallery page). Order is fixed, no data-size attributes needed. */
+.portfolio-preview .portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  grid-auto-rows:clamp(140px, 15vw, 220px);
+  grid-auto-flow:row;
+  gap:1rem;
+  column-count:initial;
+}
+.portfolio-preview .portfolio-tile{
+  grid-column:span 2; grid-row:span 2; margin-bottom:0;
+}
+.portfolio-preview .portfolio-tile:nth-child(2),
+.portfolio-preview .portfolio-tile:nth-child(3){ grid-column:span 1; grid-row:span 1; }
+.portfolio-preview .portfolio-tile:nth-child(4){ grid-column:span 2; grid-row:span 1; }
+.portfolio-preview .tile-media{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center;
+}
+
+/* ---------- PORTFOLIO FILTERS ---------- */
+.portfolio-filters{ display:flex; flex-wrap:wrap; gap:0.75rem; margin-bottom:2.5rem; }
+.filter-btn{
+  font-family:var(--f-mono); font-size:0.78rem; letter-spacing:0.06em;
+  text-transform:uppercase; color:var(--chrome);
+  background:transparent; border:1px solid var(--panel-2); border-radius:var(--radius);
+  padding:0.55rem 1.1rem; cursor:pointer; transition:all 0.2s;
+}
+.filter-btn:hover{ border-color:var(--brass-bright); color:var(--brass-bright); }
+.filter-btn.is-active{ color:var(--brass-bright); border-color:var(--brass); background:rgba(169,131,75,0.08); }
+
+/* ---------- LIGHTBOX ---------- */
+.lightbox{ position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center; }
+.lightbox[hidden]{ display:none; }
+.lightbox-scrim{ position:absolute; inset:0; background:rgba(10,10,11,0.94); }
+.lightbox-media{
+  position:relative; z-index:1; display:block;
+  max-width:88vw; max-height:78vh; width:auto; height:auto;
+  background-color:var(--img-placeholder);
+  border-radius:var(--radius); box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+.lightbox-close,
+.lightbox-arrow{
+  position:absolute; z-index:2; border-radius:50%; background:transparent;
+  border:1px solid var(--chrome); color:var(--ivory); cursor:pointer; transition:all 0.2s;
+}
+.lightbox-close:hover,
+.lightbox-arrow:hover{ border-color:var(--brass-bright); color:var(--brass-bright); }
+.lightbox-close{ top:1.5rem; right:1.5rem; width:44px; height:44px; font-size:1.4rem; line-height:1; }
+.lightbox-arrow{ top:50%; transform:translateY(-50%); width:48px; height:48px; font-size:1.1rem; }
+.lightbox-arrow--prev{ left:1.5rem; }
+.lightbox-arrow--next{ right:1.5rem; }
+.lightbox-caption{
+  position:absolute; bottom:1.5rem; left:0; right:0; z-index:2; text-align:center;
+  font-family:var(--f-mono); font-size:0.8rem; letter-spacing:0.04em;
+  text-transform:uppercase; color:var(--smoke);
+}
+
+/* ============================================
+   5. BOOKING CTA
+   ============================================ */
+.cta-band{ position:relative; min-height:60vh; display:flex; align-items:center; justify-content:center; overflow:hidden; margin-top:2rem; }
+.cta-media{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; background-color:var(--img-placeholder); }
+.cta-scrim{ position:absolute; inset:0; background:rgba(10,10,11,0.6); }
+.cta-content{ position:relative; z-index:2; text-align:center; }
+.cta-content h2{ font-size:clamp(2rem, 5vw, 3.5rem); margin-bottom:1.75rem; }
+
+/* ============================================
+   6. FOOTER
+   ============================================ */
+.site-footer{ max-width:var(--max); margin:0 auto; padding:4rem clamp(1.25rem, 4vw, 3rem) 2.5rem; }
+.footer-top{
+  display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:1rem;
+  padding-bottom:2rem; border-bottom:1px solid var(--panel-2);
+}
+.footer-mark{ font-family:var(--f-display); font-size:1.4rem; letter-spacing:0.06em; }
+.footer-handle{ font-family:var(--f-mono); color:var(--brass-bright); font-size:0.9rem; }
+.footer-feed{ display:grid; grid-template-columns:repeat(6, 1fr); gap:0.5rem; margin:2rem 0; }
+.feed-tile{
+  display:block; aspect-ratio:1/1; overflow:hidden;
+  border-radius:var(--radius); transition:opacity 0.2s;
+}
+.feed-tile:hover{ opacity:0.75; }
+.feed-img{
+  display:block; width:100%; height:100%; object-fit:cover; object-position:center;
+  background-color:var(--img-placeholder);
+}
+.footer-copy{ font-family:var(--f-mono); font-size:0.75rem; color:var(--smoke); margin-top:1.5rem; }
+
+/* ============================================
+   7. SERVICES
+   ============================================ */
+.service-group{ margin-top:4.5rem; }
+.service-group h2{ font-size:clamp(1.6rem, 3vw, 2.2rem); margin-bottom:0.5rem; }
+.service-group-desc{ color:var(--smoke); max-width:60ch; margin-bottom:1rem; }
+
+.services-grid{
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; margin-top:2rem;
+}
+.services-grid--4up{ grid-template-columns:repeat(4, 1fr); }
+.service-card{
+  position:relative;
+  display:flex; flex-direction:column; gap:1rem;
+  background:var(--panel); border:1px solid var(--panel-2); border-radius:var(--radius);
+  padding:2rem; transition:border-color 0.25s ease;
+}
+.service-card:hover{ border-color:var(--brass); }
+.service-card h3{ font-size:1.4rem; }
+.service-price{
+  font-family:var(--f-mono); font-size:0.82rem; letter-spacing:0.05em;
+  text-transform:uppercase; color:var(--brass-bright);
+}
+.service-desc{ color:var(--smoke); font-size:0.95rem; flex:1; }
+.service-details{
+  list-style:none; display:flex; flex-direction:column; gap:0.45rem;
+  color:var(--smoke); font-size:0.9rem; flex:1;
+}
+.service-details li{ padding-left:1rem; position:relative; }
+.service-details li::before{
+  content:'—'; position:absolute; left:0; top:0; color:var(--brass-bright);
+}
+
+/* Placeholder default — see comments in services.html / booking.html for which
+   tier currently wears this per section. */
+.badge-popular{
+  position:absolute; top:-0.7rem; right:1.25rem;
+  font-family:var(--f-mono); font-size:0.68rem; letter-spacing:0.06em;
+  text-transform:uppercase; color:var(--void); background:var(--brass);
+  padding:0.35rem 0.7rem; border-radius:var(--radius);
+}
+
+/* Add-ons — visually secondary to the tier cards above */
+.service-addons{ margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--panel-2); }
+.service-addons h4{
+  font-family:var(--f-mono); font-size:0.72rem; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--chrome); margin-bottom:0.9rem;
+}
+.service-addons ul{ list-style:none; display:flex; flex-direction:column; gap:0.55rem; }
+.service-addons li{
+  display:flex; justify-content:space-between; gap:1rem;
+  font-size:0.88rem; color:var(--smoke); max-width:32rem;
+}
+.service-addons .addon-price{ font-family:var(--f-mono); color:var(--chrome); white-space:nowrap; }
+
+/* ============================================
+   8. EVENTS INQUIRY
+   ============================================ */
+.events-inquiry{ margin-top:4.5rem; }
+.events-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:var(--gap); align-items:start; }
+/* min-width:0 overrides the grid item's default min-width:auto, which would
+   otherwise size this column to the carousel's un-shrunk intrinsic content
+   (full-resolution source images, before JS pins each item to a fixed px
+   width) and blow the whole page out to that width on first paint. */
+.events-intro{ min-width:0; }
+.events-intro h2{ font-size:clamp(1.8rem, 3.4vw, 2.6rem); margin-bottom:1rem; }
+.events-intro p{ color:var(--smoke); max-width:56ch; margin-bottom:1rem; }
+/* Multi-item auto-scroll carousel — shows several images in the viewport at
+   once and shifts by exactly one item, unlike the testimonial slider (which
+   shows one full card and swaps it outright). Item widths/step distance are
+   computed in JS (initEventsCarousel in script.js) since percentage
+   flex-basis has no reliable definite size to resolve against here; CSS only
+   owns the visual chrome and the transition itself. */
+.events-carousel{ position:relative; margin-top:1.5rem; min-width:0; }
+.carousel-viewport{ width:100%; min-width:0; overflow:hidden; border-radius:var(--radius); }
+.carousel-track{ display:flex; gap:0.75rem; transition:transform 0.6s ease; }
+.carousel-item{ flex-shrink:0; aspect-ratio:3/4; }
+.carousel-item img{
+  display:block; width:100%; height:100%; object-fit:cover; object-position:center;
+  background-color:var(--img-placeholder);
+}
+.carousel-arrow{ position:absolute; top:50%; transform:translateY(-50%); z-index:2; }
+.carousel-arrow--prev{ left:0.5rem; }
+.carousel-arrow--next{ right:0.5rem; }
+
+.events-form,
+.booking-form{
+  display:flex; flex-direction:column; gap:1.25rem;
+  background:var(--panel); border:1px solid var(--panel-2); border-radius:var(--radius);
+  padding:2rem;
+}
+.form-field{ display:flex; flex-direction:column; gap:0.5rem; }
+.form-field label{
+  font-family:var(--f-mono); font-size:0.72rem; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--chrome);
+}
+.form-field input,
+.form-field select,
+.form-field textarea{
+  background:var(--void); border:1px solid var(--panel-2); border-radius:var(--radius);
+  padding:0.7rem 0.9rem; color:var(--ivory); font-family:var(--f-body); font-size:0.95rem;
+  transition:border-color 0.2s;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus{ outline:none; border-color:var(--brass-bright); }
+.form-field textarea{ resize:vertical; min-height:110px; }
+.events-form .btn-solid{ border:0; cursor:pointer; }
+.form-note{ font-family:var(--f-mono); font-size:0.72rem; color:var(--smoke); }
+.form-note.is-hidden{ display:none; }
+
+/* Add-ons group on booking.html — shown/hidden per selected package family.
+   .form-field sets display:flex, which would otherwise beat the bare [hidden]
+   attribute's UA-stylesheet rule, so this follows the same .is-hidden{display:none}
+   pattern already used for .portfolio-tile filtering. */
+.addons-field.is-hidden,
+.addons-checks.is-hidden,
+.addons-note.is-hidden{ display:none; }
+.addons-note{ color:var(--smoke); font-size:0.88rem; }
+.addons-checks{ display:flex; flex-direction:column; gap:0.6rem; }
+.addon-check{
+  display:flex; align-items:center; gap:0.6rem;
+  font-family:var(--f-body); font-size:0.9rem; color:var(--smoke); cursor:pointer;
+}
+.addon-check input[type="checkbox"]{
+  accent-color:var(--brass); width:16px; height:16px; cursor:pointer;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 860px){
+  .nav-links{ display:none; }
+  .nav-links.is-open{
+    display:flex; flex-direction:column; align-items:flex-start; gap:1.25rem;
+    position:absolute; top:100%; left:0; right:0;
+    padding:1.5rem clamp(1.25rem, 4vw, 3rem) 2rem;
+    background:var(--void); border-top:1px solid var(--panel-2);
+  }
+  .nav-toggle{ display:flex; }
+  .nav-mark{ font-size:1.1rem; }
+  .about-teaser{ grid-template-columns:1fr; }
+  .portfolio-grid{ column-count:3; }
+  .services-grid{ grid-template-columns:1fr; }
+  .footer-feed{ grid-template-columns:repeat(3, 1fr); }
+  .events-grid{ grid-template-columns:1fr; }
+  .testimonial-track{ height:auto; }
+  .testimonial-card{ position:static; grid-template-columns:1fr; }
+  .testimonial-card.is-active{ display:grid; }
+  .testimonial-media{ order:-1; height:45vh; }
+  .testimonial-text{ padding:2rem clamp(1.25rem, 4vw, 3rem); }
+  .lightbox-close{ top:1rem; right:1rem; width:38px; height:38px; }
+  .lightbox-arrow{ width:38px; height:38px; }
+  .lightbox-arrow--prev{ left:0.5rem; }
+  .lightbox-arrow--next{ right:0.5rem; }
+  .carousel-arrow{ width:38px; height:38px; }
+  .carousel-arrow--prev{ left:0.25rem; }
+  .carousel-arrow--next{ right:0.25rem; }
+}
+
+@media (max-width: 600px){
+  .portfolio-grid{ column-count:2; }
+  /* Homepage preview simplifies to a plain 2x2 — the featured/supporting
+     hierarchy isn't worth the layout complexity at this size. */
+  .portfolio-preview .portfolio-grid{ grid-auto-rows:clamp(150px, 45vw, 230px); }
+  .portfolio-preview .portfolio-tile{ grid-column:span 1; grid-row:span 1; }
+}
