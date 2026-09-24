@@ -2,6 +2,7 @@
   "name": "streamline-studios-website",
   "compatibility_date": "2026-08-18",
   "assets": {
-    "directory": "./"
+    "directory": "./",
+    "not_found_handling": "404-page"
   }
 }
