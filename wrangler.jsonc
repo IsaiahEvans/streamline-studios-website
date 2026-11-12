@@ -1,7 +1,20 @@
 {
   "name": "streamline-studios-website",
+  // worker/index.js handles the inquiry forms (POST /api/contact).
+  "main": "worker/index.js",
   "compatibility_date": "2026-08-18",
   "assets": {
-    "directory": "./"
-  }
+    "directory": "./",
+    "binding": "ASSETS",
+    // Only /api/* runs the Worker; every page and image is served straight
+    // from static assets as before.
+    "run_worker_first": ["/api/*"]
+  },
+  // Lets the Worker send email, locked to the one verified inbox.
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "destination_address": "contact.streamlinestudios@gmail.com"
+    }
+  ]
 }

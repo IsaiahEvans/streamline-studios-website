@@ -1,1 +1,4 @@
 .claude/
+_originals-backup/
+.wrangler/
+node_modules/

@@ -33,40 +33,99 @@ function initSite() {
     if (match) packageSelect.value = pkg;
   }
 
-  // Booking form — add-ons group swaps based on the selected package's
-  // data-family (car/personal/brand), read off the <option> not the value,
-  // so this doesn't need a long if/else chain of exact package names.
+  // Booking form — add-ons. There is ONE list of add-on checkboxes; each
+  // item lists the package families it applies to in data-families. The
+  // selected package's data-family (car/personal/brand, read off the <option>)
+  // decides which items show. Hidden items are unchecked and disabled so they
+  // can't be submitted; checked ones post as repeated name="addons" fields.
   const addonsField = document.getElementById('bk-addons');
   if (packageSelect && addonsField) {
-    const addonsSummary = document.getElementById('bk-addons-summary');
-    const groups = Array.from(addonsField.querySelectorAll('[data-addons-for]'));
-
-    function updateAddonsSummary() {
-      const checked = Array.from(addonsField.querySelectorAll('input[type="checkbox"]:checked'))
-        .map(cb => cb.value);
-      addonsSummary.value = checked.length ? `Add-ons requested: ${checked.join(', ')}` : '';
-    }
+    const notes = Array.from(addonsField.querySelectorAll('[data-addons-for]'));
+    const list = addonsField.querySelector('.addons-checks');
+    const items = Array.from(addonsField.querySelectorAll('[data-families]'));
 
     function updateAddonsVisibility() {
       const selectedOption = packageSelect.options[packageSelect.selectedIndex];
       const family = selectedOption?.dataset.family || '';
-      groups.forEach(group => {
-        const isMatch = group.dataset.addonsFor === family;
-        group.classList.toggle('is-hidden', !isMatch);
-        if (!isMatch) {
-          group.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
-        }
+      notes.forEach(note => note.classList.toggle('is-hidden', note.dataset.addonsFor !== family));
+      let anyVisible = false;
+      items.forEach(item => {
+        const show = !!family && item.dataset.families.split(' ').includes(family);
+        const cb = item.querySelector('input[type="checkbox"]');
+        item.classList.toggle('is-hidden', !show);
+        cb.disabled = !show;
+        if (!show) cb.checked = false;
+        anyVisible = anyVisible || show;
       });
+      list.classList.toggle('is-hidden', !anyVisible);
       addonsField.classList.toggle('is-hidden', !family);
-      updateAddonsSummary();
     }
 
-    addonsField.addEventListener('change', e => {
-      if (e.target.matches('input[type="checkbox"]')) updateAddonsSummary();
-    });
     packageSelect.addEventListener('change', updateAddonsVisibility);
     updateAddonsVisibility(); // reflect any ?package= pre-fill from above on first render
   }
+
+  // Inquiry forms — submitted with fetch to the site's own Worker
+  // (worker/index.js, POST /api/contact) so the visitor stays on the page
+  // and sees a success or error message under the button.
+  // The email subject is built here at submit time, e.g.
+  // "Booking request: Car Signature (Jay Lee)" or
+  // "Event inquiry: Car meet / cruise (Jay Lee)".
+  const CONTACT_EMAIL = 'contact.streamlinestudios@gmail.com';
+  document.querySelectorAll('form.booking-form, form.events-form').forEach(form => {
+    const statusEl = form.querySelector('.form-status');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    function showStatus(message, isError) {
+      if (!statusEl) return;
+      statusEl.textContent = message;
+      statusEl.classList.toggle('is-error', !!isError);
+      statusEl.classList.remove('is-hidden');
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = (form.querySelector('[name="name"]')?.value || '').trim();
+      const pkg = form.querySelector('select[name="package"]');
+      const eventType = form.querySelector('select[name="event_type"]');
+      const pkgLabel = pkg ? pkg.options[pkg.selectedIndex].text.trim() : '';
+      let subject = 'Website inquiry';
+      if (pkg) subject = `Booking request: ${pkgLabel}`;
+      else if (eventType) subject = `Event inquiry: ${eventType.value}`;
+      if (name) subject += ` (${name})`;
+      const subjectField = form.querySelector('input[name="_subject"]');
+      if (subjectField) subjectField.value = subject;
+
+      const data = new FormData(form);
+      if (pkg) data.set('package', pkgLabel); // readable name instead of the URL slug
+
+      const btnLabel = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+      statusEl?.classList.add('is-hidden');
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' },
+        });
+        const result = await res.json().catch(() => null);
+        if (res.ok && result?.ok) {
+          form.reset();
+          // Re-sync the package-dependent fields after the reset.
+          form.querySelector('#bk-package')?.dispatchEvent(new Event('change'));
+          showStatus(result.message || "Thanks — your message was sent. I'll reply within 24 hours.", false);
+        } else {
+          showStatus(result?.message || `Your message could not be sent. Please email ${CONTACT_EMAIL} directly.`, true);
+        }
+      } catch {
+        showStatus(`Your message could not be sent. Check your connection and try again, or email ${CONTACT_EMAIL} directly.`, true);
+      } finally {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = btnLabel; }
+      }
+    });
+  });
 
   // Location preference — separate control from add-ons above, shown only
   // for Personal/Branding packages (Car sessions are inherently
@@ -237,11 +296,14 @@ function initSite() {
   }
   initEventsCarousel();
 
-  // Portfolio filters + lightbox (full gallery page only)
-  const filterBar = document.querySelector('.portfolio-filters');
-  if (filterBar) {
-    const filterBtns = Array.from(filterBar.querySelectorAll('.filter-btn'));
-    const galleryGrid = document.querySelector('.portfolio-grid');
+  // Gallery pages — portfolio.html (filters + lightbox) and the category
+  // pages like car-photography.html (lightbox only, no filter bar). Keyed off
+  // the lightbox element, which the homepage preview grid doesn't have.
+  const lightbox = document.querySelector('.lightbox');
+  const galleryGrid = lightbox ? document.querySelector('.portfolio-grid') : null;
+  if (galleryGrid) {
+    const filterBar = document.querySelector('.portfolio-filters');
+    const filterBtns = filterBar ? Array.from(filterBar.querySelectorAll('.filter-btn')) : [];
     const tiles = Array.from(galleryGrid.querySelectorAll('.portfolio-tile'));
     const categoryNotes = Array.from(document.querySelectorAll('[data-note-for]'));
     const validCats = filterBtns.map(b => b.dataset.filter).filter(f => f !== 'all');
@@ -264,15 +326,16 @@ function initSite() {
       });
     }
 
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
-    });
+    if (filterBar) {
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+      });
 
-    const params = new URLSearchParams(window.location.search);
-    applyFilter(params.get('cat'));
+      const params = new URLSearchParams(window.location.search);
+      applyFilter(params.get('cat'));
+    }
 
     // Lightbox — navigates only through tiles visible under the active filter
-    const lightbox = document.querySelector('.lightbox');
     const lightboxMedia = lightbox?.querySelector('.lightbox-media');
     const lightboxCaption = lightbox?.querySelector('.lightbox-caption');
     const closeBtn = lightbox?.querySelector('.lightbox-close');

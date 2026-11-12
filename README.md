@@ -48,16 +48,21 @@ see below).
   adding or removing a category doesn't require touching the filter logic in `script.js`.
 - Shared header/footer markup lives in one place (`components/`) and is injected into every page via
   `fetch()`, so nav or footer changes don't need to be copy-pasted across pages.
-- No image processing pipeline — photos are served at their original resolution and format, which
-  surfaced (and required fixing) real layout bugs around large intrinsic image sizes blowing out
-  flex/grid containers before JavaScript could constrain them.
+- Photos are served as WebP, resized to at most 2000px on the long edge (roughly 200–400 KB each).
+  Full-size originals live in `_originals-backup/`, which is git-ignored and never deployed. Earlier
+  versions served original-resolution files, which surfaced (and required fixing) real layout bugs
+  around large intrinsic image sizes blowing out flex/grid containers before JavaScript could
+  constrain them.
 
 ## Project Structure
 
 ```
 index.html, about.html, portfolio.html, services.html, booking.html, events.html   content pages
+car-photography.html, graduation-photography.html,
+brand-lookbook-photography.html, event-photography.html                             per-category landing pages (own title/description for search)
 404.html                                                                            custom not-found page
 components/                                                                         shared header/footer partials
+worker/index.js                                                                     Cloudflare Worker: emails form submissions (POST /api/contact)
 styles.css                                                                          all styling (design tokens at the top)
 script.js                                                                           filters, lightbox, carousel, forms, includes
 assets/img/                                                                         site + client photography

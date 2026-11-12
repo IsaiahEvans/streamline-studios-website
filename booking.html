@@ -33,9 +33,14 @@
   <p style="color:var(--smoke); max-width:60ch; margin-bottom:0.75rem;">
     Ready to book? Fill out the form below and I'll follow up to confirm availability.
   </p>
-  <a href="services.html" class="link-arrow" style="display:inline-flex; margin-bottom:2.5rem;">
+  <a href="services.html" class="link-arrow" style="display:inline-flex; margin-bottom:1.25rem;">
     See full pricing &amp; package details <span aria-hidden="true">&rarr;</span>
   </a>
+  <p class="contact-line">
+    Prefer to reach out directly? Email
+    <a href="mailto:contact.streamlinestudios@gmail.com">contact.streamlinestudios@gmail.com</a>
+    or call or text <a href="tel:+17048198244">(704) 819-8244</a>.
+  </p>
 
   <!--
     STRIPE INTEGRATION — TODO
@@ -52,18 +57,19 @@
   -->
 
   <!--
-    FORM SUBMISSION — TODO
-    This is a static site with no backend, so the form below needs a form
-    endpoint to actually deliver submissions. Sign up for a free Formspree
-    (formspree.io) or Web3Forms (web3forms.com) account, then either:
-      - Formspree: replace the placeholder action URL below with your real
-        endpoint (https://formspree.io/f/YOUR_FORM_ID)
-      - Web3Forms: change the action to https://api.web3forms.com/submit and
-        add a hidden <input type="hidden" name="access_key" value="YOUR_KEY">
-    Until then, submitting this form will fail.
+    FORM SUBMISSION — handled by this site's own Cloudflare Worker
+    (worker/index.js, route POST /api/contact), which emails the details to
+    contact.streamlinestudios@gmail.com. script.js submits with fetch and
+    shows the result in the .form-status line under the button.
   -->
-  <form class="booking-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="max-width:640px;">
+  <form class="booking-form" action="/api/contact" method="POST" style="max-width:640px;">
     <input type="hidden" name="_subject" value="New booking request — Streamline Studios">
+    <!-- Honeypot: hidden from people, filled in by spam bots. The Worker
+         silently drops any submission where this has a value. -->
+    <div class="hp-field" aria-hidden="true">
+      <label for="bk-website">Website (leave this blank)</label>
+      <input type="text" id="bk-website" name="website" tabindex="-1" autocomplete="off">
+    </div>
 
     <div class="form-field">
       <label for="bk-name">Name *</label>
@@ -103,8 +109,11 @@
       </select>
     </div>
 
-    <!-- Add-ons — hidden by default; script.js shows the group matching the
-         selected package's data-family, or the car note, or nothing at all. -->
+    <!-- Add-ons — hidden by default. One shared list: each add-on appears once
+         and lists the package families it applies to in data-families.
+         script.js shows the matching items (or the car note) for the selected
+         package's data-family, and unchecks + disables the rest so only
+         relevant selections are submitted (as repeated "addons" fields). -->
     <div class="form-field addons-field is-hidden" id="bk-addons">
       <label>Add-ons</label>
 
@@ -112,41 +121,28 @@
         Add-ons for car sessions are confirmed directly with you after booking.
       </p>
 
-      <div class="addons-checks is-hidden" data-addons-for="personal">
-        <label class="addon-check">
-          <input type="checkbox" value="Extra edited photo (+$15)">
+      <div class="addons-checks is-hidden">
+        <label class="addon-check" data-families="personal brand">
+          <input type="checkbox" name="addons" value="Extra edited photo (+$15)">
           <span>Extra edited photo (+$15)</span>
         </label>
-        <label class="addon-check">
-          <input type="checkbox" value="Additional outfit (+$25)">
+        <label class="addon-check" data-families="personal brand">
+          <input type="checkbox" name="addons" value="Additional outfit (+$25)">
           <span>Additional outfit (+$25)</span>
         </label>
-        <label class="addon-check">
-          <input type="checkbox" value="Additional location (+$40)">
+        <label class="addon-check" data-families="personal">
+          <input type="checkbox" name="addons" value="Additional location (+$40)">
           <span>Additional location (+$40)</span>
         </label>
-        <label class="addon-check">
-          <input type="checkbox" value="15-second cinematic reel (+$50)">
+        <label class="addon-check" data-families="personal">
+          <input type="checkbox" name="addons" value="15-second cinematic reel (+$50)">
           <span>15-second cinematic reel (+$50)</span>
         </label>
-        <label class="addon-check">
-          <input type="checkbox" value="Custom graphic/poster design (+$35)">
+        <label class="addon-check" data-families="personal">
+          <input type="checkbox" name="addons" value="Custom graphic/poster design (+$35)">
           <span>Custom graphic/poster design (+$35)</span>
         </label>
       </div>
-
-      <div class="addons-checks is-hidden" data-addons-for="brand">
-        <label class="addon-check">
-          <input type="checkbox" value="Extra edited photo (+$15)">
-          <span>Extra edited photo (+$15)</span>
-        </label>
-        <label class="addon-check">
-          <input type="checkbox" value="Additional outfit (+$25)">
-          <span>Additional outfit (+$25)</span>
-        </label>
-      </div>
-
-      <input type="hidden" id="bk-addons-summary" name="addons_requested" value="">
     </div>
 
     <!-- Location preference — separate from the add-ons group above (own
@@ -177,21 +173,17 @@
     </div>
 
     <button type="submit" class="btn btn-solid">Send Booking Request</button>
-    <p class="form-note">Submissions go straight to my inbox — I'll follow up within a day or two.</p>
+    <p class="form-note">Submissions go straight to my inbox — I'll reply within 24 hours.</p>
+    <p class="form-status is-hidden" role="status" aria-live="polite"></p>
   </form>
 
   <div class="light-streak" aria-hidden="true"></div>
 
   <!--
-    FORM SUBMISSION — TODO
-    This is a static site with no backend, so the form below needs a form
-    endpoint to actually deliver submissions. Sign up for a free Formspree
-    (formspree.io) or Web3Forms (web3forms.com) account, then either:
-      - Formspree: replace the placeholder action URL below with your real
-        endpoint (https://formspree.io/f/YOUR_FORM_ID)
-      - Web3Forms: change the action to https://api.web3forms.com/submit and
-        add a hidden <input type="hidden" name="access_key" value="YOUR_KEY">
-    Until then, submitting this form will fail.
+    FORM SUBMISSION — handled by this site's own Cloudflare Worker
+    (worker/index.js, route POST /api/contact), which emails the details to
+    contact.streamlinestudios@gmail.com. script.js submits with fetch and
+    shows the result in the .form-status line under the button.
   -->
   <section class="events-inquiry">
     <div class="events-grid">
@@ -213,19 +205,25 @@
 
         <div class="events-photos">
           <div class="events-photo">
-            <img src="assets/img/portfolio-events-1.jpg" alt="Blue Lotus Emira front three-quarter view at a car show" loading="lazy">
+            <img src="assets/img/portfolio-events-1.webp" alt="Small dog in a green hoodie beside a truck wrapped in Christmas lights at a holiday car meet" loading="lazy">
           </div>
           <div class="events-photo">
-            <img src="assets/img/portfolio-events-2.jpg" alt="Blue Lotus Emira with door open at a car show" loading="lazy">
+            <img src="assets/img/portfolio-events-2.webp" alt="Truck covered in multicolored Christmas lights with a small dog in a green hoodie beside it" loading="lazy">
           </div>
           <div class="events-photo">
-            <img src="assets/img/portfolio-events-4.jpg" alt="Silver BMW M4 front detail at dusk" loading="lazy">
+            <img src="assets/img/portfolio-events-4.webp" alt="Pink BMW M4 leading a row of cars inside a garage car meet" loading="lazy">
           </div>
         </div>
       </div>
 
-      <form class="events-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="events-form" action="/api/contact" method="POST">
         <input type="hidden" name="_subject" value="New event inquiry — Streamline Studios">
+        <!-- Honeypot: hidden from people, filled in by spam bots. The Worker
+             silently drops any submission where this has a value. -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="ev-website">Website (leave this blank)</label>
+          <input type="text" id="ev-website" name="website" tabindex="-1" autocomplete="off">
+        </div>
 
         <div class="form-field">
           <label for="ev-name">Name *</label>
@@ -258,7 +256,8 @@
         </div>
 
         <button type="submit" class="btn btn-solid">Send Inquiry</button>
-        <p class="form-note">Submissions go straight to my inbox — I'll follow up within a day or two.</p>
+        <p class="form-note">Submissions go straight to my inbox — I'll reply within 24 hours.</p>
+        <p class="form-status is-hidden" role="status" aria-live="polite"></p>
       </form>
 
     </div>

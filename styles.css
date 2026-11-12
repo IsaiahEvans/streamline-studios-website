@@ -129,6 +129,9 @@ h1,h2,h3{ font-family:var(--f-display); font-weight:700; text-transform:uppercas
 }
 .hero-mark span{ display:block; color:var(--brass-bright); font-size:0.5em; letter-spacing:0.15em; }
 .hero-actions{ display:flex; gap:1rem; justify-content:center; margin-top:2rem; flex-wrap:wrap; }
+.hero-price{ margin-top:1.25rem; font-family:var(--f-mono); font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; }
+.hero-price a{ color:var(--brass-bright); border-bottom:1px solid transparent; transition:border-color 0.2s; }
+.hero-price a:hover{ border-color:var(--brass-bright); }
 .scroll-cue{
   position:absolute; bottom:1.5rem; left:50%; transform:translateX(-50%); z-index:2;
   width:1px; height:40px; background:rgba(237,234,226,0.35);
@@ -167,6 +170,20 @@ h1,h2,h3{ font-family:var(--f-display); font-weight:700; text-transform:uppercas
   border-bottom:1px solid transparent; transition:border-color 0.2s;
 }
 .link-arrow:hover{ border-color:var(--brass-bright); }
+
+/* ============================================
+   WHY PEOPLE BOOK (homepage, between about + testimonials)
+   ============================================ */
+.why-book{ max-width:var(--max); margin:0 auto; padding:6rem clamp(1.25rem, 4vw, 3rem); }
+.why-book h2{ font-size:clamp(2rem, 4vw, 3rem); margin-bottom:3rem; }
+.why-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; }
+.why-item{
+  background:var(--panel); border:1px solid var(--panel-2); border-radius:var(--radius);
+  padding:2rem; transition:border-color 0.25s ease;
+}
+.why-item:hover{ border-color:var(--brass); }
+.why-item h3{ font-size:1.4rem; margin-bottom:0.75rem; }
+.why-item p{ color:var(--smoke); font-size:0.95rem; }
 
 /* ============================================
    3. TESTIMONIALS
@@ -340,6 +357,12 @@ button.portfolio-tile{
   display:block; width:100%; height:100%; object-fit:cover; object-position:center;
   background-color:var(--img-placeholder);
 }
+.footer-contact{
+  display:flex; flex-wrap:wrap; gap:0.75rem 2rem;
+  font-family:var(--f-mono); font-size:0.8rem; letter-spacing:0.04em;
+}
+.footer-contact a{ color:var(--chrome); transition:color 0.2s; }
+.footer-contact a:hover{ color:var(--brass-bright); }
 .footer-copy{ font-family:var(--f-mono); font-size:0.75rem; color:var(--smoke); margin-top:1.5rem; }
 
 /* ============================================
@@ -452,14 +475,33 @@ button.portfolio-tile{
 .events-form .btn-solid{ border:0; cursor:pointer; }
 .form-note{ font-family:var(--f-mono); font-size:0.72rem; color:var(--smoke); }
 .form-note.is-hidden{ display:none; }
+/* Honeypot field — moved off-screen instead of display:none so simple bots
+   still fill it in. Real visitors never see or tab into it. */
+.hp-field{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+/* Result line shown under the submit button after sending */
+.form-status{ font-family:var(--f-mono); font-size:0.8rem; line-height:1.6; padding:0.8rem 1rem; border:1px solid var(--brass); border-radius:var(--radius); color:var(--brass-bright); background:rgba(169,131,75,0.08); }
+.form-status.is-error{ border-color:#b3564d; color:#e39a92; background:rgba(179,86,77,0.08); }
+.form-status.is-hidden{ display:none; }
+.booking-form .btn-solid{ cursor:pointer; }
+.booking-form button:disabled, .events-form button:disabled{ opacity:0.6; cursor:wait; }
+/* Direct contact line shown above the booking form */
+.contact-line{ color:var(--smoke); font-size:0.95rem; max-width:60ch; margin-bottom:2rem; }
+.contact-line a{ color:var(--brass-bright); border-bottom:1px solid transparent; transition:border-color 0.2s; }
+.contact-line a:hover{ border-color:var(--brass-bright); }
+
+/* Category landing pages (car-photography.html etc.) */
+.category-actions{ display:flex; align-items:center; flex-wrap:wrap; gap:1rem 1.75rem; margin-bottom:2.5rem; }
+.category-end{ display:flex; flex-direction:column; align-items:center; gap:1.25rem; margin-top:3rem; }
 
 /* Add-ons group on booking.html — shown/hidden per selected package family.
    .form-field sets display:flex, which would otherwise beat the bare [hidden]
    attribute's UA-stylesheet rule, so this follows the same .is-hidden{display:none}
    pattern already used for .portfolio-tile filtering. */
+.form-field.is-hidden,
 .addons-field.is-hidden,
 .addons-checks.is-hidden,
 .addons-note.is-hidden{ display:none; }
+.addon-check.is-hidden{ display:none; }
 .addons-note{ color:var(--smoke); font-size:0.88rem; }
 .addons-checks{ display:flex; flex-direction:column; gap:0.6rem; }
 .addon-check{
@@ -486,6 +528,8 @@ button.portfolio-tile{
   .about-teaser{ grid-template-columns:1fr; }
   .portfolio-grid{ column-count:3; }
   .services-grid{ grid-template-columns:1fr; }
+  .why-grid{ grid-template-columns:1fr; }
+  .why-book{ padding-top:4rem; padding-bottom:4rem; }
   .footer-feed{ grid-template-columns:repeat(3, 1fr); }
   .events-grid{ grid-template-columns:1fr; }
   .testimonial-track{ height:auto; }
